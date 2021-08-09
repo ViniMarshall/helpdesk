@@ -1,0 +1,280 @@
+/* Configurações */
+body,html{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input,select,textarea{
+    outline: 0;
+}
+span.erro{
+    display: block;
+    color: #c52121;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid pink;
+}
+
+/* Menu */
+.menu{
+    background-color: #f1f1f1;
+    padding: 20px 0;
+    display: flex;
+}
+.menu a{
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.menu a:hover{
+    opacity: .8;
+}
+.menu .conteudo,.menu .links-menu{
+    display: flex;
+    justify-content: space-between;
+}
+.menu .item{
+    margin: 0 5px;
+}
+.menu .sair{
+    color: #c52121;
+}
+
+/* Conteúdo */
+.conteudo{
+    max-width: 992px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Card */
+.card .campos{
+    border: 1px solid #a1a1a1;
+    margin: 40px auto 0;
+    border-radius: 10px;
+}
+.card h1{
+    margin: 0;
+    padding: 0 15px;
+    height: 45px;
+    line-height: 45px;
+    background: #f1f1f1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid #a1a1a1;
+    font-size: 16px;
+}
+.card form .campo{
+    margin: 15px 10px 20px;
+}
+.card .campo .campo-personalizado{
+    width: 100%;
+    min-height: 37px;
+    border: 1px solid #a1a1a1;
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+/* Formulário */
+form .campo{
+    width: 280px;
+    margin: 0 0 20px;
+}
+form .campo label{
+    display: block;
+    margin-bottom: 5px;
+}
+form .campo input,
+form .campo select,
+form .campo textarea{
+    width: 100%;
+    height: 37px;
+    border: 1px solid #a1a1a1;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+form .campo textarea{
+    max-width: 100%;
+    padding: 10px;
+    height: auto;
+}
+form .campo input:focus::placeholder{
+    opacity: 0;
+}
+form .campo button{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #17a2b8;
+    cursor: pointer;
+    border-radius: 10px;
+}
+form .campo button:hover{
+    opacity: .8;
+}
+
+/* Login */
+.login .card{
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* Cadastro */
+form.cadastro .campos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+form.cadastro .campo{
+    width: 45%;
+}
+
+/* Home */
+.home .links-home{
+    max-width: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.home .links-home a{
+    position: relative;
+    width: 200px;
+    padding: 30px;
+    text-align: center;
+    display: block;
+    background-color: #a1a1a1;
+    border-radius: 10px;
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 200;
+}
+.home .links-home a:hover{
+    opacity: .8;
+    transform: scale(1.02);
+}
+.home .conteudo-home h1{
+    text-align: center;
+}
+
+/* Abertura chamado */
+.abertura-chamado .card .campo{
+    width: 95%;
+    margin: 20px auto;
+}
+.abertura-chamado .botoes{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.abertura-chamado .botoes a,
+.abertura-chamado .botoes button{
+    width: 45%;
+    height: 45px;
+    line-height: 45px;
+    background: #17a2b8;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botoes a:hover,.botoes button:hover{
+    opacity: .9;
+}
+
+/* Chamados */
+.chamados table{
+    display: block;
+    background: #f1f1f1;
+    padding: 15px;
+    padding-right: 220px;
+    margin: 20px 15px;
+    border-radius: 10px;
+}
+
+.chamados tbody{
+    display: block;
+}
+
+.chamados tr{
+    display: block;
+}
+
+.chamados .mensagem{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0 0;
+}
+
+.chamados .mensagem span{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #9b9b9b;
+}
+
+.chamados .titulo{
+    font-size: 22px;
+}
+
+.chamados .categoria,
+.chamados .data{
+    font-size: 13px;
+    color: #9b9b9b;
+}
+
+.chamados .campos{
+    margin: 40px auto;
+    min-height: 200px;
+}
+
+.chamados .campo{
+    position: relative;
+}
+
+.chamados .campo .botoes{
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    margin-top: -40px;
+}
+
+.chamados .campo .botoes .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 35px;
+    text-decoration: none;
+    color: #fff;
+    background: #000;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
