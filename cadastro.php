@@ -7,12 +7,18 @@
     <?php
         session_start();
         include('view/html/topo.php');
+        $query = 'cadastro';
+        if($tecnico == true){
+            $query = 'cadastro-tecnico';
+        }
     ?>
     <div class="conteudo">
         <h1>Cadastro</h1>
 
-        <form class="cadastro" method="POST" name="cadastro" action="cont/cadastro.php?a=cadastro">
+        <form class="cadastro" method="POST" name="cadastro" action="/helpdesk/cont/cadastro.php?a=<?php echo $query ?>">
+            <?php if($tecnico == false){?>
             <input type="hidden" name="grupo" value="usuario">
+            <?php } ?>
             <div class="campos">
                 <div class="campo">
                     <label for="nome">*Nome:</label>
@@ -38,6 +44,15 @@
                     <label for="nome">*Senha:</label>
                     <input type="password" name="senha" id="senha-cad" required>
                 </div>
+                <?php if($tecnico == true){?>
+                <div class="campo">
+                    <label for="nome">*Grupo</label>
+                    <select name="grupo">
+                        <option value="tecnico">Tecnico</option>
+                        <option value="usuario">Usuario</option>
+                    </select>
+                </div>
+                <?php } ?>
             </div>
             <div class="campo">
                 <button type="submit">Cadastrar</button>

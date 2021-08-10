@@ -18,8 +18,7 @@
     <div class="conteudo">
         <div class="card">
             <form class="abrir-chamado" method="POST" name="abrir-chamado" action="cont/chamado.php?query=abrir">
-                <input type="hidden" name="status" value="Aberto">
-                <input type="hidden" name="proprietario" value="<?php echo $_SESSION['nome']?>">
+                <input type="hidden" name="status" value="1">
                 <input type="hidden" name="tecnico" value="<?php echo $_SESSION['nome']?>">
                 <input type="hidden" name="data" value="<?php echo $dataAtual ?>">
                 <div class="campos">
@@ -31,11 +30,11 @@
                     <div class="campo">
                         <label for="categoria">Categoria:</label>
                         <select name="categoria" required>
-                            <option value="Criação de usuário">Criação de usuário</option>
-                            <option value="Hardware">Hardware</option>
-                            <option value="Software">Software</option>
-                            <option value="Rede">Rede</option>
-                            <option value="Design">Design</option>
+                            <option value="1">Criação de usuário</option>
+                            <option value="2">Hardware</option>
+                            <option value="3">Software</option>
+                            <option value="4">Rede</option>
+                            <option value="5">Design</option>
                         </select>
                     </div>
                     <div class="campo">

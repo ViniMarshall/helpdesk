@@ -1,5 +1,16 @@
 CREATE DATABASE bd_projeto;
 USE bd_projeto;
+
+CREATE TABLE `tecnico`(
+    `id_tecnico` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nome` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `usuario` VARCHAR(30) NOT NULL UNIQUE,
+    `senha` VARCHAR(40) NOT NULL,
+    `sexo` CHAR(1) NOT NULL,
+    `grupo` VARCHAR(255) NOT NULL
+) ENGINE = innoDB;
+
 CREATE TABLE `usuario`(
     `id_usuario` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `nome` VARCHAR(255) NOT NULL,
@@ -12,18 +23,18 @@ CREATE TABLE `usuario`(
 
 CREATE TABLE `chamado`(
     `id_chamado` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `fk_usuario` INT(11) NOT NULL,
+    `fk_usuario` INT(11),
+    `fk_tecnico` INT(11),
     `titulo_chamado` VARCHAR(255) NOT NULL,
-    `categoria_chamado` VARCHAR(255) NOT NULL,
+    `categoria_chamado` INT(11),
     `descricao_chamado` TEXT,
     `data_chamado_abertura` DATETIME,
     `data_chamado_resolucao` DATETIME,
-    `status_chamado` VARCHAR(255) NOT NULL,
-    `proprietario_chamado` VARCHAR(255) NOT NULL,
-    `tecnico_responsavel` VARCHAR(255) NOT NULL,
+    `status_chamado` INT(11),
     `mensagem_chamado` TEXT
 ) ENGINE = innoDB;
 
 ALTER TABLE `chamado` ADD FOREIGN KEY(fk_usuario) REFERENCES `usuario`(id_usuario);
+ALTER TABLE `chamado` ADD FOREIGN KEY(fk_tecnico) REFERENCES `tecnico`(id_tecnico);
 
-INSERT INTO usuario(nome,email,usuario,senha,sexo,grupo) VALUES ('Admin','admin@admin.com','admin',MD5('123'),'O','tecnico');
+INSERT INTO tecnico(nome,email,usuario,senha,sexo,grupo) VALUES ('Admin','tecnico@helpdesk.com','tecnico',MD5('123'),'O','tecnico');

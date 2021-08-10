@@ -6,5 +6,9 @@
 <?php 
     $data = new DateTime();
     $vs = $data->format('YmdHis');
+    $tecnico = false;
+    if(str_contains($_SERVER['REQUEST_URI'],'/admin')){
+        $tecnico = true;
+    }
  ?>
 <link rel="stylesheet" href="/helpdesk/view/css/styles.css?v=<?php echo $vs; ?>">

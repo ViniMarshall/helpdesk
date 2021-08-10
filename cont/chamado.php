@@ -19,17 +19,19 @@
                 $data_chamado_abertura = $_POST['data'];
                 $data_chamado_resolucao = $_POST['data'];
                 $status_chamado = $_POST['status'];
-                $proprietario_chamado = $_POST['proprietario'];
-                $tecnico_responsavel = $_POST['tecnico'];
 
                 //Envio para o banco
-                $insert = "INSERT INTO chamado(fk_usuario,titulo_chamado,categoria_chamado,descricao_chamado,data_chamado_abertura,data_chamado_resolucao,status_chamado,proprietario_chamado,tecnico_responsavel) VALUES ('$fk_usuario','$titulo','$categoria','$descricao','$data_chamado_abertura','$data_chamado_resolucao','$status_chamado','$proprietario_chamado','$tecnico_responsavel')";
+                if($_SESSION['grupo_usuario'] == 'tecnico'){
+                    $insert = "INSERT INTO chamado(fk_tecnico,titulo_chamado,categoria_chamado,descricao_chamado,data_chamado_abertura,data_chamado_resolucao,status_chamado) VALUES ('$fk_usuario','$titulo','$categoria','$descricao','$data_chamado_abertura','$data_chamado_resolucao','$status_chamado')";
+                } else{
+                    $insert = "INSERT INTO chamado(fk_usuario,titulo_chamado,categoria_chamado,descricao_chamado,data_chamado_abertura,data_chamado_resolucao,status_chamado) VALUES ('$fk_usuario','$titulo','$categoria','$descricao','$data_chamado_abertura','$data_chamado_resolucao','$status_chamado')";
+                }
                 $envio = mysqli_query($conexao,$insert);
                 // Redirecionamento
                 if(mysqli_affected_rows($conexao) != 0){
                     header("Location: /helpdesk/chamados.php?sucesso=1");
                 }else{
-                    header("Location: /helpdesk/chamados.php?erro=1"); 
+                    header("Location: /helpdesk/chamados.php?erro=1");
                 }
             }
         } else{
@@ -40,7 +42,9 @@
                     $idChamado = $_GET['id'];
                 }
                 //Foreign Key
-                $fk_usuario = $_SESSION['id_usuario'];
+                if($_SESSION['grupo_usuario'] == 'tecnico'){
+                    $fk_tecnico = $_SESSION['id_usuario'];
+                }
 
                 //Dados do formulário
                 $titulo = $_POST['titulo'];
@@ -49,11 +53,9 @@
                 $data_chamado_abertura = $_POST['data'];
                 $data_chamado_resolucao = $_POST['data'];
                 $status_chamado = $_POST['status'];
-                $proprietario_chamado = $_POST['proprietario'];
-                $tecnico_responsavel = $_POST['tecnico_responsavel'];
                 $mensagem_chamado = $_POST['mensagem'];
 
-                if($status_chamado == 'Resolvido' || $status_chamado == 'Fechado'){
+                if($status_chamado == '3' || $status_chamado == '4'){
                     date_default_timezone_set('America/Sao_Paulo');
                     $data = new DateTime();
                     $data_resolvido = $data->format('Y-m-d H:i:s');
@@ -61,11 +63,15 @@
                 }
 
                 //Envio para o banco
-                $insert = "UPDATE chamado SET titulo_chamado = '$titulo', categoria_chamado = '$categoria', descricao_chamado = '$descricao', data_chamado_abertura = '$data_chamado_abertura',data_chamado_resolucao = '$data_chamado_resolucao', status_chamado = '$status_chamado', proprietario_chamado = '$proprietario_chamado', tecnico_responsavel = '$tecnico_responsavel',mensagem_chamado = '$mensagem_chamado' WHERE id_chamado = '$idChamado'";
+                if($_SESSION['grupo_usuario'] == 'tecnico'){
+                    $insert = "UPDATE chamado SET fk_tecnico = '$fk_tecnico', titulo_chamado = '$titulo', categoria_chamado = '$categoria', descricao_chamado = '$descricao', data_chamado_abertura = '$data_chamado_abertura', data_chamado_resolucao = '$data_chamado_resolucao', status_chamado = '$status_chamado', mensagem_chamado = '$mensagem_chamado' WHERE id_chamado = '$idChamado'";
+                } else{
+                    $insert = "UPDATE chamado SET titulo_chamado = '$titulo', categoria_chamado = '$categoria', descricao_chamado = '$descricao', data_chamado_abertura = '$data_chamado_abertura', data_chamado_resolucao = '$data_chamado_resolucao', status_chamado = '$status_chamado', mensagem_chamado = '$mensagem_chamado' WHERE id_chamado = '$idChamado'";
+                }
                 $envio = mysqli_query($conexao,$insert);
                 // Redirecionamento
                 if(mysqli_affected_rows($conexao) != 0){
-                    header("Location: /helpdesk/chamados.php?sucesso=1");
+                    header("Location: /helpdesk/chamados.php?sucesso=2");
                 }else{
                     header("Location: /helpdesk/chamados.php?noedit=1");
                 }

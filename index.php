@@ -10,6 +10,10 @@
             header('Location: home.php?logado=true');
         }
         include('view/html/topo.php');
+        $string = 'login';
+        if($tecnico == true){
+            $string = 'login-tecnico';
+        }
 
         /* Erros */
         $mensagemErro = '';
@@ -25,7 +29,7 @@
     ?>
     <div class="conteudo">
         <div class="card">
-            <form class="acesso" method="POST" name="acesso" action="cont/login.php?a=login">
+            <form class="acesso" method="POST" name="acesso" action="/helpdesk/cont/login.php?a=<?php echo $string ?>">
                 <div class="campos">
                     <h1>Login</h1>
                     <div class="campo">

@@ -22,13 +22,6 @@
     <div class="conteudo">
         <div class="card">
             <form class="editar-chamado" method="POST" name="editar-chamado" action="cont/chamado.php?query=editar&id=<?php echo $idChamado ?>">
-                <?php if($_SESSION['grupo_usuario'] == 'tecnico'){ ?>
-                <input type="hidden" name="proprietario" value="<?php echo $conteudo[$i]['proprietario'] ?>">
-                <input type="hidden" name="tecnico_responsavel" value="<?php echo $_SESSION['nome']?>">
-                <?php }else{ ?>
-                <input type="hidden" name="proprietario" value="<?php echo $conteudo[$i]['proprietario'] ?>">
-                <input type="hidden" name="tecnico_responsavel" value="<?php echo $conteudo[$i]['tecnico_responsavel']?>">
-                <?php } ?>
                 <input type="hidden" name="data" value="<?php echo $conteudo[$i]['data_abertura'] ?>">
                 <div class="campos">
                     <h1>Chamado</h1>
@@ -48,10 +41,11 @@
                                 $categorias = array('Criação de usuário','Hardware','Software','Rede','Design');
                                 $cat = $conteudo[$i]['categoria'];
                                 for($a = 0; $a < 5; $a++){
+                                    $b = $a + 1;
                                     if($categorias[$a] == $cat){
-                                        echo '<option value="'.$categorias[$a].'" selected>'.$categorias[$a].'</option>';
+                                        echo '<option value="'.$b.'" selected>'.$categorias[$a].'</option>';
                                     } else{
-                                        echo '<option value="'.$categorias[$a].'">'.$categorias[$a].'</option>';
+                                        echo '<option value="'.$b.'">'.$categorias[$a].'</option>';
                                     }
                                 }
                             ?>
@@ -72,11 +66,12 @@
                             <?php 
                                 $status = array('Aberto','Pendente','Resolvido','Fechado');
                                 $stat = $conteudo[$i]['status'];
-                                for($b = 0; $b < 4; $b++){
-                                    if($status[$b] == $stat){
-                                        echo '<option value="'.$status[$b].'" selected>'.$status[$b].'</option>';
+                                for($c = 0; $c < 4; $c++){
+                                    $d = $c + 1;
+                                    if($status[$c] == $stat){
+                                        echo '<option value="'.$d.'" selected>'.$status[$c].'</option>';
                                     } else{
-                                        echo '<option value="'.$status[$b].'">'.$status[$b].'</option>';
+                                        echo '<option value="'.$d.'">'.$status[$c].'</option>';
                                     }
                                 }
                             ?>
@@ -97,7 +92,7 @@
                         <label>Resposta do técnico:</label>
                         <input type="hidden" name="mensagem" value="<?php echo $msg ?>">
                         <div class="campo-personalizado"><?php echo $msg ?></div>
-                        <?php  } ?>
+                        <?php } ?>
                     </div>
                     <?php }?>
                 </div>
