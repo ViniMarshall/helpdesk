@@ -31,9 +31,12 @@
             //Comando para inserir no banco
             if($tecnico == false){
                 $result_usuario = "INSERT INTO usuario(nome,email,usuario,senha,sexo,grupo) VALUES ('$nome_usuario','$email_usuario','$login_usuario','$senha_usuario','$sexo_usuario','$grupo_usuario')";
-                
             } else{
-                $result_usuario = "INSERT INTO tecnico(nome,email,usuario,senha,sexo,grupo) VALUES ('$nome_usuario','$email_usuario','$login_usuario','$senha_usuario','$sexo_usuario','$grupo_usuario')";
+                if($grupo_usuario == 'tecnico'){
+                    $result_usuario = "INSERT INTO tecnico(nome,email,usuario,senha,sexo,grupo) VALUES ('$nome_usuario','$email_usuario','$login_usuario','$senha_usuario','$sexo_usuario','$grupo_usuario')";
+                } else{
+                    $result_usuario = "INSERT INTO usuario(nome,email,usuario,senha,sexo,grupo) VALUES ('$nome_usuario','$email_usuario','$login_usuario','$senha_usuario','$sexo_usuario','$grupo_usuario')";
+                }
             }
             //Envio para o banco
             $post_usuario = mysqli_query($conexao,$result_usuario);

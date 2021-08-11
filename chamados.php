@@ -104,7 +104,9 @@
                         <tr><td class="categoria"><?php echo $cat ?></td></tr>
                         <tr><td class="descricao"><?php echo $conteudo[$i]['descricao'] ?></td></tr>
                         <tr><td class="data">Criado por: <?php echo $conteudo[$i]['proprietario']  ?></td></tr>
+                        <?php if (isset($conteudo[$i]['tecnico_responsavel'])){ ?>
                         <tr><td class="data">Responsável: <?php echo $conteudo[$i]['tecnico_responsavel'] ?></td></tr>
+                        <?php }?>
                         <?php  if($msg != null && $msg != ''){ ?>
                         <tr class="mensagem"><td><span>Resposta chamado:</span><?php echo $msg ?></td></tr>
                         <?php }?>
@@ -136,8 +138,10 @@
                         <tr><td class="categoria"><?php echo $cat ?></td></tr>
                         <tr><td class="descricao"><?php echo $conteudo[$i]['descricao'] ?></td></tr>
                         <tr><td class="data">Criado por: <?php echo $conteudo[$i]['proprietario']  ?></td></tr>
+                        <?php if (isset($conteudo[$i]['tecnico_responsavel'])){ ?>
                         <tr><td class="data">Resolvido por: <?php echo $conteudo[$i]['tecnico_responsavel'] ?></td></tr>
-                        <?php  if($msg != null && $msg != ''){ ?>
+                        <?php }?>
+                        <?php if($msg != null && $msg != ''){ ?>
                         <tr class="mensagem"><td><span>Resposta chamado:</span><?php echo $msg ?></td></tr>
                         <?php }?>
                     </table>
@@ -168,7 +172,9 @@
                         <tr><td class="categoria"><?php echo $cat ?></td></tr>
                         <tr><td class="descricao"><?php echo $conteudo[$i]['descricao'] ?></td></tr>
                         <tr><td class="data">Criado por: <?php echo $conteudo[$i]['proprietario']  ?></td></tr>
+                        <?php if (isset($conteudo[$i]['tecnico_responsavel'])){ ?>
                         <tr><td class="data">Fechado por: <?php echo $conteudo[$i]['tecnico_responsavel'] ?></td></tr>
+                        <?php }?>
                         <?php  if($msg != null && $msg != ''){ ?>
                         <tr class="mensagem"><td><span>Resposta chamado:</span><?php echo $msg ?></td></tr>
                         <?php }?>

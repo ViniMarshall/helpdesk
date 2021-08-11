@@ -23,7 +23,6 @@
                 <h1>O que deseja fazer?</h1>
                 <div class="campo">
                     <div class="links-home">
-                       
                         <a href="abrir-chamado.php">Abrir chamado</a>
                         <a href="chamados.php"><?php echo $linkChamados ?></a>
                     </div>

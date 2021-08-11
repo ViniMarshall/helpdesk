@@ -23,6 +23,7 @@
         <div class="card">
             <form class="editar-chamado" method="POST" name="editar-chamado" action="cont/chamado.php?query=editar&id=<?php echo $idChamado ?>">
                 <input type="hidden" name="data" value="<?php echo $conteudo[$i]['data_abertura'] ?>">
+                <input type="hidden" name="proprietario" value="<?php echo $conteudo[$i]['id_proprietario'] ?>">
                 <div class="campos">
                     <h1>Chamado</h1>
                     <div class="campo">
@@ -39,10 +40,11 @@
                         <select name="categoria">
                             <?php 
                                 $categorias = array('Criação de usuário','Hardware','Software','Rede','Design');
+                                $nCategorias = array(1,2,3,4,5);
                                 $cat = $conteudo[$i]['categoria'];
                                 for($a = 0; $a < 5; $a++){
                                     $b = $a + 1;
-                                    if($categorias[$a] == $cat){
+                                    if($nCategorias[$a] == $cat){
                                         echo '<option value="'.$b.'" selected>'.$categorias[$a].'</option>';
                                     } else{
                                         echo '<option value="'.$b.'">'.$categorias[$a].'</option>';
@@ -65,10 +67,11 @@
                         <select name="status">
                             <?php 
                                 $status = array('Aberto','Pendente','Resolvido','Fechado');
+                                $nStatus = array(1,2,3,4);
                                 $stat = $conteudo[$i]['status'];
                                 for($c = 0; $c < 4; $c++){
                                     $d = $c + 1;
-                                    if($status[$c] == $stat){
+                                    if($nStatus[$c] == $stat){
                                         echo '<option value="'.$d.'" selected>'.$status[$c].'</option>';
                                     } else{
                                         echo '<option value="'.$d.'">'.$status[$c].'</option>';
@@ -93,6 +96,20 @@
                         <input type="hidden" name="mensagem" value="<?php echo $msg ?>">
                         <div class="campo-personalizado"><?php echo $msg ?></div>
                         <?php } ?>
+                    </div>
+                    <?php }?>
+                    <?php if($_SESSION['grupo_usuario'] == 'tecnico'){ ?>
+                    <div class="campo">
+                        <label for="tecnico">Técnico responsável:</label>
+                        <select name="tecnico">
+                            <?php 
+                                for($x = 0; $x < $sizeTech; $x++){
+                                    $tecnico = $tech[$x]['nome'];
+                                    $id = $tech[$x]['id'];
+                                    echo '<option value="'.$id.'">'.$tecnico.'</option>';
+                                }
+                            ?>
+                        </select>
                     </div>
                     <?php }?>
                 </div>

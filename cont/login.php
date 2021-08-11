@@ -42,7 +42,11 @@
         } else{
             unset($_SESSION['login']);
             unset($_SESSION['senha']);
-            header("Location:/helpdesk/index.php?erro=login-incorreto");
+            if($tecnico == false){
+                header("Location:/helpdesk/index.php?erro=login-incorreto");
+            } else{
+                header("Location:/helpdesk/admin/index.php?erro=login-incorreto");
+            }
         }
     }
 ?>

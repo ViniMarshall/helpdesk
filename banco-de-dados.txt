@@ -25,6 +25,7 @@ CREATE TABLE `chamado`(
     `id_chamado` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `fk_usuario` INT(11),
     `fk_tecnico` INT(11),
+    `id_proprietario` INT(11),
     `titulo_chamado` VARCHAR(255) NOT NULL,
     `categoria_chamado` INT(11),
     `descricao_chamado` TEXT,
@@ -37,4 +38,4 @@ CREATE TABLE `chamado`(
 ALTER TABLE `chamado` ADD FOREIGN KEY(fk_usuario) REFERENCES `usuario`(id_usuario);
 ALTER TABLE `chamado` ADD FOREIGN KEY(fk_tecnico) REFERENCES `tecnico`(id_tecnico);
 
-INSERT INTO tecnico(nome,email,usuario,senha,sexo,grupo) VALUES ('Admin','tecnico@helpdesk.com','tecnico',MD5('123'),'O','tecnico');
+INSERT INTO tecnico(nome,email,usuario,senha,sexo,grupo) VALUES ('Tecnico','tecnico@helpdesk.com','tecnico',MD5('123'),'O','tecnico');
