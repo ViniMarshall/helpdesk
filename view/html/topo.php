@@ -15,6 +15,11 @@
                 <a href="chamados.php" class="item"><?php echo $link ?></a>
                 <?php echo '<a class="item sair" href="model/logout.php?token='.md5(session_id()).'&param='.$param.'">Sair</a>'?>
             <?php } else{ ?>
+                <?php if($tecnico == true){ ?>
+                <a href="/helpdesk/index.php">Login Usuario</a>
+                <?php } else{?>
+                <a href="admin">Login Tecnico</a>
+                <?php }?>
                 <a href="cadastro.php" class="item">Cadastro</a>
             <?php }?>
         </div>
